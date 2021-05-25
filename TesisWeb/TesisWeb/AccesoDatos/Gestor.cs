@@ -79,6 +79,7 @@ namespace TesisWeb.AccesoDatos
             prod.Descripcion = dr["descripcion"].ToString();
             prod.Precio = double.Parse(dr["precio"].ToString());
             prod.idOferta = int.Parse(dr["idOferta"].ToString());
+            
             dr.Close();
             conex.Close();
 
@@ -150,7 +151,7 @@ namespace TesisWeb.AccesoDatos
 
         public void EditarProductos(Producto prod)
         {
-            var sql = "UPDATE Productos SET idTipoProducto=@idTipoProducto, idMarca=@idMarca, descripcion=@descripcion, precio=@precio, idOferta=@idOferta WHERE idProducto= @id";
+            var sql = "UPDATE Productos SET idTipoProducto=@idTipoProducto, idMarca=@idMarca, descripcion=@descripcion, precio=@precio, idOferta=@idOferta, imagen=@imagen WHERE idProducto= @id";
             SqlConnection conex = new SqlConnection(cadenaCon);
             conex.Open();
             SqlCommand cmd = new SqlCommand(sql, conex);
@@ -160,6 +161,7 @@ namespace TesisWeb.AccesoDatos
             cmd.Parameters.AddWithValue("@descripcion", prod.Descripcion);
             cmd.Parameters.AddWithValue("@precio", prod.Precio);
             cmd.Parameters.AddWithValue("@idOferta", prod.idOferta);
+            cmd.Parameters.AddWithValue("@imagen", prod.imagenProducto);
             cmd.ExecuteNonQuery();
             conex.Close();
 

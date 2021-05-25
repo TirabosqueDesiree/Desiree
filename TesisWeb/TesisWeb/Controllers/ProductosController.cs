@@ -12,11 +12,11 @@ using TesisWeb.Models.clasesProducto;
 
 namespace TesisWeb.Controllers
 {
-    public class ProductosController : Controller   
+    public class ProductosController : Controller
     {
         private Entities1 db = new Entities1();
 
-        [AuthorizeUser(idOperacion:1)]
+        [AuthorizeUser(idOperacion: 1)]
         public ActionResult Carga()
         {
             Gestor gestor = new Gestor();
@@ -40,7 +40,7 @@ namespace TesisWeb.Controllers
                 //setear la imagen a la entidad que se creara
                 prod.ProductoModel.imagenProducto = imageData;
 
-                
+
             }
 
             Gestor gestor = new Gestor();
@@ -52,13 +52,10 @@ namespace TesisWeb.Controllers
 
         public ActionResult convertirImagen(int idProducto)
         {
+            var imagenProducto = db.Productos.Where(x => x.idProducto == idProducto).FirstOrDefault();
 
-           
-                var imagenProducto = db.Productos.Where(x => x.idProducto == idProducto).FirstOrDefault();
+            return File(imagenProducto.imagen, "imagenProducto/jpeg");
 
-                return File(imagenProducto.imagen, "imagenProducto/jpeg");
-          
-           
         }
 
 
@@ -91,13 +88,29 @@ namespace TesisWeb.Controllers
             prod.TiposOfertas = gestor.ListadoOfertas();
 
 
+
             return View(prod);
         }
+
         [HttpPost]
-        public ActionResult EdicionProducto(VMProducto producto)
+        public ActionResult EdicionProducto(VMProducto prod, HttpPostedFileBase imagenProducto)
         {
+
+            if (imagenProducto != null && imagenProducto.ContentLength > 0)
+            {
+                byte[] imageData = null;
+                using (var binaryReader = new BinaryReader(imagenProducto.InputStream))
+                {
+                    imageData = binaryReader.ReadBytes(imagenProducto.ContentLength);
+                }
+                //setear la imagen a la entidad que se creara
+                prod.ProductoModel.imagenProducto = imageData;
+
+
+            }
             Gestor gestor = new Gestor();
-            gestor.EditarProductos(producto.ProductoModel);
+            gestor.EditarProductos(prod.ProductoModel);
+            db.SaveChanges();
             return RedirectToAction("ListadoProductos");
         }
 
@@ -114,6 +127,7 @@ namespace TesisWeb.Controllers
             return View(prod);
 
         }
+
         [HttpPost]
         public ActionResult EliminarProducto(VMProducto prod)
         {
@@ -226,7 +240,7 @@ namespace TesisWeb.Controllers
 
 
 
-        [AuthorizeUser (idOperacion:2)]
+        [AuthorizeUser(idOperacion: 2)]
         public ActionResult ListadoProductos()
         {
             Gestor gestor = new Gestor();
@@ -234,7 +248,7 @@ namespace TesisWeb.Controllers
             return View(lista);
         }
 
-        [AuthorizeUser(idOperacion:4)]
+        [AuthorizeUser(idOperacion: 4)]
         public ActionResult ListadoTiposProductos()
         {
             Gestor gestor = new Gestor();
@@ -242,7 +256,7 @@ namespace TesisWeb.Controllers
             return View(lista);
         }
 
-        [AuthorizeUser(idOperacion:6)]
+        [AuthorizeUser(idOperacion: 6)]
         public ActionResult ListadoMarcas()
         {
             Gestor gestor = new Gestor();
