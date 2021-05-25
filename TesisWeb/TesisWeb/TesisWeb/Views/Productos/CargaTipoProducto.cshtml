@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "CargaTipoProducto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model TesisWeb.Models.clasesProducto.TipoProducto
+
+<link href="~/Content/template/css/style2.css" rel="stylesheet" />
+<br />
+<br />
+
+<hr />
+
+
+
+
+<div class="row">
+    <div class="col-md-3 col-sm">
+
+    </div>
+    <div class=" col-md-6  border p-3 form ">
+        @using (Html.BeginForm())
+        {
+            <h2 class="sub ">Agregar un Tipo de Producto</h2>
+            <div class="form-group">
+                <label>Descripción</label>
+                @Html.TextBoxFor(x => x.Descripcion, htmlAttributes: new { @class = "form-control" })
+
+            </div>
+            <br />
+            <div>
+                <input type="submit" class="btn btn-primary" value="Agregar Tipo Producto" />
+            </div>
+           
+
+
+        }
+    </div>
+    <div class="col-md-3 col-sm">
+
+        <div>
+            <br />
+            <a href="/Productos/ListadoTiposProductos" class="btn btn-primary">Ir a Listado de Tipos de Productos</a>
+
+        </div>
+    </div>
+</div>
+
+
+

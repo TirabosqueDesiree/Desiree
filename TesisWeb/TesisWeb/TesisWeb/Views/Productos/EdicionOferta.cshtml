@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "EdicionOferta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model TesisWeb.Models.clasesProducto.Oferta
+<h2>CargaTipoProducto</h2>
+
+<div class="row">
+    <div class="col-md-2">
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(x => x.IdOferta)
+
+        <div class="col-md-8">
+
+            <div class="form-group">
+                <label>Descripción</label>
+                @Html.TextBoxFor(x => x.Descripcion, htmlAttributes: new { @class = "form-control" })
+
+            </div>
+            <input type="submit" class="btn btn-primary" value="Editar Oferta" />
+        </div>
+    }
+    <div class="col-md-2">
+    </div>
+</div>
+

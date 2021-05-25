@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "ListadoOfertas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model List<TesisWeb.Models.clasesProducto.Oferta>
+<br />
+<br />
+<br />
+
+
+<div class="container">
+    <h2 style="text-align:center; color: darkslategrey">
+        Listado
+        de Ofertas
+    </h2>
+
+    <table class="table table-active text-primary table-hover">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Ofertas</th>
+                <th>Acciones</th>
+
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdOferta</td>
+                <td>@item.Descripcion</td>
+
+                <td>
+                    <a href="/Productos/EdicionOferta?Id=@item.IdOferta" class="btn btn-primary">Editar</a>
+                    <a href="/Productos/Eliminaroferta?Id=@item.IdOferta" class="btn btn-danger">Eliminar</a>
+                </td>
+
+            </tr>
+        }
+    </table>
+
+
+</div>
+<div>
+    <div>
+        <a href="/Productos/CargaOferta" class="btn btn-primary">Agregar una nueva Oferta</a>
+
+    </div>
+</div>
+
+

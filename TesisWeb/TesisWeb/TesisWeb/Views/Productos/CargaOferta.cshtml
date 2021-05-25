@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "CargaOferta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model TesisWeb.Models.clasesProducto.Oferta
+
+<link href="~/Content/template/css/style2.css" rel="stylesheet" />
+<br />
+<br />
+
+<hr />
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-3 col-sm">
+
+        </div>
+        <div class=" col-md-6  border p-3 form ">
+            <h2>Agregar una Oferta</h2>
+            @using (Html.BeginForm())
+            {
+
+                <div class="form-group">
+                    <label>Descripción</label>
+                    @Html.TextBoxFor(x => x.Descripcion, htmlAttributes: new { @class = "form-control" })
+
+                </div>
+                <br />
+
+                <div>
+                    <input type="submit" class="btn btn-primary" value="Agregar Oferta" />
+                </div>
+
+
+            }
+        </div>
+
+        <div class="col-md-3">
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,32 @@
+﻿body {
+    background-color: lightblue;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: small, medium;
+}
+
+.abs-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.abs-izq {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-height: 100vh;
+}
+
+.form {
+    width: 550px;
+}
+
+
+h2 {
+    text-decoration: underline;
+}
+
+.tabl {
+}
+
