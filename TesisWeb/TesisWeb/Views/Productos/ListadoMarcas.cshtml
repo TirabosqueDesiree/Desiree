@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "ListadoMarcas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<TesisWeb.Models.clasesProducto.Marca>
+<br />
+<br />
+<br />
+
+
+<div class="container">
+    <h2 style="text-align:center; color: darkslategrey">Listado
+    de Marcas</h2>
+
+    <table class="table table-active text-primary table-hover">
+        <thead>
+            <tr>
+                <th>Marcas</th>
+                <th>Acciones</th>
+
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Descripcion</td>
+
+                <td>
+                    <a href="/Productos/EdicionMarca?Id=@item.IdMarca" class="btn btn-primary">Editar</a>
+                    <a href="/Productos/EliminarMarca?Id=@item.IdMarca" class="btn btn-danger">Eliminar</a>
+                </td>
+
+            </tr>
+        }
+    </table>
+
+
+</div>
+<div>
+    <div>
+        <a href="/Productos/CargaMarca" class="btn btn-primary">Agregar una nueva Marca</a>
+
+    </div>
+</div>
+
+
+

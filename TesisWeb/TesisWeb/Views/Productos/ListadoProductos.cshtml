@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "ListadoProductos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@model List<TesisWeb.Models.clasesProducto.DTOProducto>
+
+<br />
+<br />
+<br />
+
+
+
+<div class="container">
+
+    <h2 style="text-align:center; color: darkslategrey">Listado de Productos</h2>
+
+    <table class="table table-active text-primary table-hover">
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Tipo Producto</th>
+                <th>Marca</th>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Tipo Oferta</th>
+                <th>Acciones</th>
+
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdProducto</td>
+                <td>@item.TipoProducto</td>
+                <td>@item.Marca</td>
+                <td>@item.Descripcion</td>
+                <td>@item.Precio</td>
+                <td>@item.Oferta</td>
+                <td>
+                    <a href="/Productos/EdicionProducto?Id=@item.IdProducto" class="btn btn-primary">Editar</a>
+                    <a href="/Productos/EliminarProducto?Id=@item.IdProducto" class="btn btn-danger">Eliminar</a>
+                </td>
+
+            </tr>
+        }
+    </table>
+
+    <div>
+        <a href="/Productos/Carga" class="btn btn-primary">Agregar un nuevo Producto</a>
+
+    </div>
+</div>

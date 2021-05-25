@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b4dbf96198404493b551dfda896ff016" Name="Diagram1">
+        <EntityTypeShape EntityType="JACarnesModel.Clientes" Width="1.5" PointX="7.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.DetallePedidos" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.Empleados" Width="1.5" PointX="7.25" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.EstadosPedidos" Width="1.5" PointX="9.5" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.Localidades" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.Marcas" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.Ofertas" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.Operaciones" Width="1.5" PointX="2.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.Pedidos" Width="1.5" PointX="9.5" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.PedidosYEstados" Width="1.5" PointX="11.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.Productos" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.Provincias" Width="1.5" PointX="5" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.Roles_Operaciones" Width="1.5" PointX="5" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.RolesUsuarios" Width="1.5" PointX="2.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.TiposProductos" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.Usuarios" Width="1.5" PointX="5" PointY="11.25" IsExpanded="true" />
+        <AssociationConnector Association="JACarnesModel.FK_Clientes_Provincias" ManuallyRouted="false" />
+        <AssociationConnector Association="JACarnesModel.FK_Clientes_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="JACarnesModel.FK_Pedidos_Clientes" ManuallyRouted="false" />
+        <AssociationConnector Association="JACarnesModel.FK_DetallePedidos_Productos" ManuallyRouted="false" />
+        <AssociationConnector Association="JACarnesModel.FK_Empleados_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="JACarnesModel.FK_PedidosYEstados_Empleados" ManuallyRouted="false" />
+        <AssociationConnector Association="JACarnesModel.FK_PedidosYEstados_EstadosPedidos" ManuallyRouted="false" />
+        <AssociationConnector Association="JACarnesModel.FK_Productos_Marcas" ManuallyRouted="false" />
+        <AssociationConnector Association="JACarnesModel.FK_Productos_Ofertas" ManuallyRouted="false" />
+        <AssociationConnector Association="JACarnesModel.FK_Roles_Operaciones_Operaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="JACarnesModel.FK_PedidosYEstados_Pedidos1" ManuallyRouted="false" />
+        <AssociationConnector Association="JACarnesModel.FK_Productos_TiposProductos" ManuallyRouted="false" />
+        <AssociationConnector Association="JACarnesModel.FK_Roles_Operaciones_RolesUsuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="JACarnesModel.FK_Usuarios_RolesUsuarios" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

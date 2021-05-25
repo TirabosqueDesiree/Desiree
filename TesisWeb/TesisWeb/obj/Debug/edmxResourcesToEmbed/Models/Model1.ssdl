@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JACarnesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="idCliente" />
+    </Key>
+    <Property Name="idCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="30" />
+    <Property Name="apellido" Type="nvarchar" MaxLength="30" />
+    <Property Name="telefono" Type="nvarchar" MaxLength="50" />
+    <Property Name="direccion" Type="nvarchar" MaxLength="50" />
+    <Property Name="idUsuario" Type="int" />
+    <Property Name="localidad" Type="nvarchar" MaxLength="50" />
+    <Property Name="idProvincia" Type="int" />
+  </EntityType>
+  <EntityType Name="DetallePedidos">
+    <Key>
+      <PropertyRef Name="idDetallePedido" />
+    </Key>
+    <Property Name="idDetallePedido" Type="int" Nullable="false" />
+    <Property Name="nroPedido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idProducto" Type="int" />
+    <Property Name="cantidad" Type="int" />
+  </EntityType>
+  <EntityType Name="Empleados">
+    <Key>
+      <PropertyRef Name="idEmpleado" />
+    </Key>
+    <Property Name="idEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="apellido" Type="nvarchar" MaxLength="50" />
+    <Property Name="telefono" Type="nvarchar" MaxLength="50" />
+    <Property Name="idUsuario" Type="int" />
+  </EntityType>
+  <EntityType Name="EstadosPedidos">
+    <Key>
+      <PropertyRef Name="idEstadoPedido" />
+    </Key>
+    <Property Name="idEstadoPedido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Localidades">
+    <Key>
+      <PropertyRef Name="idLocalidad" />
+    </Key>
+    <Property Name="idLocalidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="50" />
+    <Property Name="idProvincia" Type="int" />
+  </EntityType>
+  <EntityType Name="Marcas">
+    <Key>
+      <PropertyRef Name="idMarca" />
+    </Key>
+    <Property Name="idMarca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Ofertas">
+    <Key>
+      <PropertyRef Name="idOferta" />
+    </Key>
+    <Property Name="idOferta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Operaciones">
+    <Key>
+      <PropertyRef Name="idOperacion" />
+    </Key>
+    <Property Name="idOperacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Pedidos">
+    <Key>
+      <PropertyRef Name="nroPedido" />
+    </Key>
+    <Property Name="nroPedido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fechaPedido" Type="date" />
+    <Property Name="idCliente" Type="int" />
+    <Property Name="idTipoDevolucion" Type="int" />
+  </EntityType>
+  <EntityType Name="PedidosYEstados">
+    <Key>
+      <PropertyRef Name="idPedEstado" />
+    </Key>
+    <Property Name="idPedEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nroPedido" Type="int" />
+    <Property Name="idEstadoPedido" Type="int" />
+    <Property Name="idEmpleado" Type="int" />
+  </EntityType>
+  <EntityType Name="Productos">
+    <Key>
+      <PropertyRef Name="idProducto" />
+    </Key>
+    <Property Name="idProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idTipoProducto" Type="int" />
+    <Property Name="idMarca" Type="int" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="50" />
+    <Property Name="precio" Type="float" />
+    <Property Name="idOferta" Type="int" />
+  </EntityType>
+  <EntityType Name="Provincias">
+    <Key>
+      <PropertyRef Name="idProvincia" />
+    </Key>
+    <Property Name="idProvincia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Roles_Operaciones">
+    <Key>
+      <PropertyRef Name="idRolOperacion" />
+    </Key>
+    <Property Name="idRolOperacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idRol" Type="int" />
+    <Property Name="idOperacion" Type="int" />
+  </EntityType>
+  <EntityType Name="RolesUsuarios">
+    <Key>
+      <PropertyRef Name="idRol" />
+    </Key>
+    <Property Name="idRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TiposProductos">
+    <Key>
+      <PropertyRef Name="idTipoProducto" />
+    </Key>
+    <Property Name="idTipoProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" />
+    <Property Name="contraseña" Type="nvarchar" MaxLength="50" />
+    <Property Name="idRol" Type="int" />
+  </EntityType>
+  <Association Name="FK_Clientes_Provincias">
+    <End Role="Provincias" Type="Self.Provincias" Multiplicity="0..1" />
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provincias">
+        <PropertyRef Name="idProvincia" />
+      </Principal>
+      <Dependent Role="Clientes">
+        <PropertyRef Name="idProvincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clientes_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Clientes">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetallePedidos_Productos">
+    <End Role="Productos" Type="Self.Productos" Multiplicity="0..1" />
+    <End Role="DetallePedidos" Type="Self.DetallePedidos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Productos">
+        <PropertyRef Name="idProducto" />
+      </Principal>
+      <Dependent Role="DetallePedidos">
+        <PropertyRef Name="idProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empleados_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="Empleados">
+        <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pedidos_Clientes">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+    <End Role="Pedidos" Type="Self.Pedidos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="idCliente" />
+      </Principal>
+      <Dependent Role="Pedidos">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PedidosYEstados_Empleados">
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
+    <End Role="PedidosYEstados" Type="Self.PedidosYEstados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleados">
+        <PropertyRef Name="idEmpleado" />
+      </Principal>
+      <Dependent Role="PedidosYEstados">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PedidosYEstados_EstadosPedidos">
+    <End Role="EstadosPedidos" Type="Self.EstadosPedidos" Multiplicity="0..1" />
+    <End Role="PedidosYEstados" Type="Self.PedidosYEstados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadosPedidos">
+        <PropertyRef Name="idEstadoPedido" />
+      </Principal>
+      <Dependent Role="PedidosYEstados">
+        <PropertyRef Name="idEstadoPedido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PedidosYEstados_Pedidos1">
+    <End Role="Pedidos" Type="Self.Pedidos" Multiplicity="0..1" />
+    <End Role="PedidosYEstados" Type="Self.PedidosYEstados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pedidos">
+        <PropertyRef Name="nroPedido" />
+      </Principal>
+      <Dependent Role="PedidosYEstados">
+        <PropertyRef Name="nroPedido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Productos_Marcas">
+    <End Role="Marcas" Type="Self.Marcas" Multiplicity="0..1" />
+    <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Marcas">
+        <PropertyRef Name="idMarca" />
+      </Principal>
+      <Dependent Role="Productos">
+        <PropertyRef Name="idMarca" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Productos_Ofertas">
+    <End Role="Ofertas" Type="Self.Ofertas" Multiplicity="0..1" />
+    <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ofertas">
+        <PropertyRef Name="idOferta" />
+      </Principal>
+      <Dependent Role="Productos">
+        <PropertyRef Name="idOferta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Productos_TiposProductos">
+    <End Role="TiposProductos" Type="Self.TiposProductos" Multiplicity="0..1" />
+    <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposProductos">
+        <PropertyRef Name="idTipoProducto" />
+      </Principal>
+      <Dependent Role="Productos">
+        <PropertyRef Name="idTipoProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Roles_Operaciones_Operaciones">
+    <End Role="Operaciones" Type="Self.Operaciones" Multiplicity="0..1" />
+    <End Role="Roles_Operaciones" Type="Self.Roles_Operaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operaciones">
+        <PropertyRef Name="idOperacion" />
+      </Principal>
+      <Dependent Role="Roles_Operaciones">
+        <PropertyRef Name="idOperacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Roles_Operaciones_RolesUsuarios">
+    <End Role="RolesUsuarios" Type="Self.RolesUsuarios" Multiplicity="0..1" />
+    <End Role="Roles_Operaciones" Type="Self.Roles_Operaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RolesUsuarios">
+        <PropertyRef Name="idRol" />
+      </Principal>
+      <Dependent Role="Roles_Operaciones">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_RolesUsuarios">
+    <End Role="RolesUsuarios" Type="Self.RolesUsuarios" Multiplicity="0..1" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RolesUsuarios">
+        <PropertyRef Name="idRol" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="JACarnesModelStoreContainer">
+    <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DetallePedidos" EntityType="Self.DetallePedidos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstadosPedidos" EntityType="Self.EstadosPedidos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Localidades" EntityType="Self.Localidades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Marcas" EntityType="Self.Marcas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ofertas" EntityType="Self.Ofertas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Operaciones" EntityType="Self.Operaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pedidos" EntityType="Self.Pedidos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PedidosYEstados" EntityType="Self.PedidosYEstados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Provincias" EntityType="Self.Provincias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles_Operaciones" EntityType="Self.Roles_Operaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RolesUsuarios" EntityType="Self.RolesUsuarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposProductos" EntityType="Self.TiposProductos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Clientes_Provincias" Association="Self.FK_Clientes_Provincias">
+      <End Role="Provincias" EntitySet="Provincias" />
+      <End Role="Clientes" EntitySet="Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clientes_Usuarios" Association="Self.FK_Clientes_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Clientes" EntitySet="Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetallePedidos_Productos" Association="Self.FK_DetallePedidos_Productos">
+      <End Role="Productos" EntitySet="Productos" />
+      <End Role="DetallePedidos" EntitySet="DetallePedidos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empleados_Usuarios" Association="Self.FK_Empleados_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Empleados" EntitySet="Empleados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pedidos_Clientes" Association="Self.FK_Pedidos_Clientes">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="Pedidos" EntitySet="Pedidos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PedidosYEstados_Empleados" Association="Self.FK_PedidosYEstados_Empleados">
+      <End Role="Empleados" EntitySet="Empleados" />
+      <End Role="PedidosYEstados" EntitySet="PedidosYEstados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PedidosYEstados_EstadosPedidos" Association="Self.FK_PedidosYEstados_EstadosPedidos">
+      <End Role="EstadosPedidos" EntitySet="EstadosPedidos" />
+      <End Role="PedidosYEstados" EntitySet="PedidosYEstados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PedidosYEstados_Pedidos1" Association="Self.FK_PedidosYEstados_Pedidos1">
+      <End Role="Pedidos" EntitySet="Pedidos" />
+      <End Role="PedidosYEstados" EntitySet="PedidosYEstados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Productos_Marcas" Association="Self.FK_Productos_Marcas">
+      <End Role="Marcas" EntitySet="Marcas" />
+      <End Role="Productos" EntitySet="Productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Productos_Ofertas" Association="Self.FK_Productos_Ofertas">
+      <End Role="Ofertas" EntitySet="Ofertas" />
+      <End Role="Productos" EntitySet="Productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Productos_TiposProductos" Association="Self.FK_Productos_TiposProductos">
+      <End Role="TiposProductos" EntitySet="TiposProductos" />
+      <End Role="Productos" EntitySet="Productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Roles_Operaciones_Operaciones" Association="Self.FK_Roles_Operaciones_Operaciones">
+      <End Role="Operaciones" EntitySet="Operaciones" />
+      <End Role="Roles_Operaciones" EntitySet="Roles_Operaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Roles_Operaciones_RolesUsuarios" Association="Self.FK_Roles_Operaciones_RolesUsuarios">
+      <End Role="RolesUsuarios" EntitySet="RolesUsuarios" />
+      <End Role="Roles_Operaciones" EntitySet="Roles_Operaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_RolesUsuarios" Association="Self.FK_Usuarios_RolesUsuarios">
+      <End Role="RolesUsuarios" EntitySet="RolesUsuarios" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

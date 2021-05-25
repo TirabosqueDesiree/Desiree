@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "Carga";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model TesisWeb.Models.clasesProducto.VMProducto
+
+
+
+<link href="~/Content/template/css/style2.css" rel="stylesheet" />
+<br />
+
+
+<hr />
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-3 col-sm">
+
+        </div>
+
+        <div class=" col-md-6  border p-3 form ">
+            <h2 class="sub ">Carga de Productos</h2>
+            @using (Html.BeginForm())
+            {
+
+                <br />
+
+                <div class="form-group">
+                    <label>Tipo de Producto</label>
+                    @Html.DropDownListFor(x => x.ProductoModel.IdTipoProducto, new SelectList(Model.TiposProductos, "idTipoProducto", "descripcion", "SELECCIONE"), htmlAttributes: new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Marca</label>
+                    @Html.DropDownListFor(x => x.ProductoModel.IdMarca, new SelectList(Model.TiposMarcas, "idMarca", "descripcion", "SELECCIONE"), htmlAttributes: new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Descripción</label>
+                    @Html.TextBoxFor(x => x.ProductoModel.Descripcion, htmlAttributes: new { @class = "form-control" })
+
+                </div>
+                <div class="form-group">
+                    <label>Precio</label>
+                    @Html.TextBoxFor(x => x.ProductoModel.Precio, htmlAttributes: new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Tipo de Oferta</label>
+                    @Html.DropDownListFor(x => x.ProductoModel.idOferta, new SelectList(Model.TiposOfertas, "idOferta", "descripcion", "SELECCIONE"), htmlAttributes: new { @class = "form-control" })
+                </div>
+
+                <input type="submit" class="btn btn-outline-dark" value="Agregar Producto" />
+
+            }
+        </div>
+        <div class="col-md-3 col-sm">
+            <table class="table table-striped text-primary table-responsive">
+
+                <tr>
+                    <th><a href="/Productos/CargaOferta" class="btn btn-primary">Agregar Oferta</a></th>
+                    <th> <a href="/Productos/CargaTipoProducto" class="btn btn-primary">Agregar Tipo Producto</a></th>
+
+                </tr>
+
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+
+

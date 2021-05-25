@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "CargaMarca";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model TesisWeb.Models.clasesProducto.Marca
+
+<link href="~/Content/template/css/style2.css" rel="stylesheet" />
+<br />
+
+
+<hr />
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-3 col-sm">
+
+        </div>
+        <div class=" col-md-6  border p-3 form ">
+            <div>
+                <h2 class=".marg">Agregar una Marca</h2>
+            </div>
+            @using (Html.BeginForm())
+            {
+
+                <div class="form-group">
+                    <label>Descripción</label>
+                    @Html.TextBoxFor(x => x.Descripcion, htmlAttributes: new { @class = "form-control" })
+
+                </div>
+                <br />
+                <div>
+                    <input type="submit" class="btn btn-primary" value="Agregar Marca" />
+
+                </div>
+
+            }
+
+        </div>
+        <div class="col-md-3">
+            <br />
+            <a href="/Productos/ListadoMarcas" class="btn btn-primary">Ir a Listado de Marcas</a>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "UnauthorizedOperation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section>
+    <h1>Error, no tienes permiso</h1>
+</section>
+<section class="">
+    <div>
+        <h2>Error</h2>
+        <div>
+            <h3>Sin autorizacion</h3>
+            @if(ViewBag.operacion !="")
+            {
+                <p>Operacion @ViewBag.operacion</p>
+            }
+            @if(ViewBag.msjeError !="")
+            {
+                <p>@ViewBag.msjeError</p>
+            }
+        </div>
+    </div>
+</section>
