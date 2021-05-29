@@ -8,6 +8,7 @@
 
 
 
+
 <link href="~/Content/template/css/style2.css" rel="stylesheet" />
 <br />
 
@@ -35,6 +36,7 @@
                 <div class="form-group">
                     <label>Marca</label>
                     @Html.DropDownListFor(x => x.ProductoModel.IdMarca, new SelectList(Model.TiposMarcas, "idMarca", "descripcion", "SELECCIONE"), htmlAttributes: new { @class = "form-control" })
+
                 </div>
                 <div class="form-group">
                     <label>Descripción</label>

@@ -43,12 +43,25 @@
                                             </div>
                                         </div>
                                         <div class="form-group mt-4 mb-0"><button class="btn btn-primary btn-block">Iniciar sesión</button></div>
+                                        <br />
+                                        <hr />
+                                        @if (Session["User"] == null)
+                                        {
+                                           
+                                            @Html.ActionLink("Crear Usuario", "CrearUsuario", "Usuarios")
+                                        }
+
                                     </form>
                                 </div>
 
                             </div>
                         </div>
                     </div>
+                </div>
+                <br />
+                <hr />
+                <div>
+                    
                 </div>
             </main>
         </div>

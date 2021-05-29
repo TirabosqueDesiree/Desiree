@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using TesisWeb.Models;
 using TesisWeb.Models.clasesProducto;
+using TesisWeb.Models.clasesUsuarios;
 
 namespace TesisWeb.AccesoDatos
 {
@@ -362,6 +364,47 @@ namespace TesisWeb.AccesoDatos
             return lista;
         }
 
+        public void Insertarusuarios(VMUsuario usuario)
+        {
+            var sql = "INSERT INTO Usuarios (email, contraseña, idRol) VALUES (@email, @contraseña, @idRol)";
+            SqlConnection conex = new SqlConnection(cadenaCon);
+            conex.Open();
+            SqlCommand cmd = new SqlCommand(sql, conex);
+            cmd.Parameters.AddWithValue("@email", usuario.UsuarioModel.email);
+            cmd.Parameters.AddWithValue("@contraseña", usuario.UsuarioModel.contraseña);
+            cmd.Parameters.AddWithValue("@idRol", usuario.UsuarioModel.idRol);
+            
 
+
+            cmd.ExecuteNonQuery();
+            conex.Close();
+
+        }
+        public List<RolesUsuarios> ListadoRoles()
+        {
+            var lista = new List<RolesUsuarios>();
+            var sql = "SELECT * from RolesUsuarios";
+
+            SqlConnection conex = new SqlConnection(cadenaCon);
+            conex.Open();
+            SqlCommand cmd = new SqlCommand(sql, conex);
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr != null)
+            {
+                while (dr.Read())
+                {
+
+                    RolesUsuarios rol = new RolesUsuarios();
+                    rol.idRol= (int)dr["idRol"];
+                    rol.descripcion = dr["descripcion"].ToString();
+
+
+                    lista.Add(rol);
+                }
+            }
+            dr.Close();
+            conex.Close();
+            return lista;
+        }
     }
 }

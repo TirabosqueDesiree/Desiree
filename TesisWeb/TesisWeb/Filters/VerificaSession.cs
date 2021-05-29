@@ -15,7 +15,7 @@ namespace TesisWeb.Filters
         {
             try
             {
-                base.OnActionExecuting(filterContext);
+                
 
                 oUsuario = (Usuarios)HttpContext.Current.Session["User"];
                 if (oUsuario == null)
@@ -24,7 +24,9 @@ namespace TesisWeb.Filters
                     {
                         filterContext.HttpContext.Response.Redirect("~/Acceso/Login");
                     }
+
                 }
+                base.OnActionExecuting(filterContext);
 
             }
             catch (Exception)

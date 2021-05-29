@@ -24,6 +24,7 @@ namespace TesisWeb.Controllers
             vm.TiposMarcas = gestor.ListadoMarcas();
             vm.TiposProductos = gestor.ListadoTiposProd();
             vm.TiposOfertas = gestor.ListadoOfertas();
+
             return View(vm);
         }
 
@@ -42,11 +43,11 @@ namespace TesisWeb.Controllers
 
 
             }
-
             Gestor gestor = new Gestor();
             gestor.InsertarProductos(prod);
             db.SaveChanges();
             return RedirectToAction("ListadoProductos");
+
         }
 
 
@@ -78,6 +79,8 @@ namespace TesisWeb.Controllers
         }
 
 
+
+        [AuthorizeUser(idOperacion: 11)]
         public ActionResult EdicionProducto(int Id)
         {
             var prod = new VMProducto();
@@ -114,6 +117,7 @@ namespace TesisWeb.Controllers
             return RedirectToAction("ListadoProductos");
         }
 
+        [AuthorizeUser(idOperacion: 12)]
         public ActionResult EliminarProducto(int Id)
         {
             var prod = new VMProducto();
@@ -136,6 +140,8 @@ namespace TesisWeb.Controllers
             return RedirectToAction("ListadoProductos");
         }
 
+
+        [AuthorizeUser(idOperacion: 14)]
         public ActionResult EliminarTipoProd(int Id)
         {
             var tipo = new TipoProducto();
@@ -153,6 +159,7 @@ namespace TesisWeb.Controllers
         }
 
 
+        [AuthorizeUser(idOperacion: 16)]
         public ActionResult EliminarMarca(int Id)
         {
             var marca = new Marca();
@@ -170,6 +177,7 @@ namespace TesisWeb.Controllers
         }
 
 
+        [AuthorizeUser(idOperacion: 18)]
         public ActionResult EliminarOferta(int Id)
         {
             var oferta = new Oferta();
@@ -187,6 +195,7 @@ namespace TesisWeb.Controllers
         }
 
 
+        [AuthorizeUser(idOperacion: 13)]
         public ActionResult EdicionTipoProducto(int Id)
         {
             var tipoProd = new TipoProducto();
@@ -203,6 +212,8 @@ namespace TesisWeb.Controllers
             gestor.EditarTipoProductos(tipo);
             return RedirectToAction("ListadoTiposProductos");
         }
+
+        [AuthorizeUser(idOperacion: 15)]
         public ActionResult EdicionMarca(int Id)
         {
             var marca = new Marca();
@@ -221,6 +232,7 @@ namespace TesisWeb.Controllers
         }
 
 
+        [AuthorizeUser(idOperacion: 17)]
         public ActionResult EdicionOferta(int Id)
         {
             var oferta = new Oferta();

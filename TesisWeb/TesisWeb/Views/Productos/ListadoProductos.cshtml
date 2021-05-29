@@ -3,7 +3,7 @@
     ViewBag.Title = "ListadoProductos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@using TesisWeb.Helpers
 
 @model List<TesisWeb.Models.clasesProducto.DTOProducto>
 
@@ -38,7 +38,7 @@
                 <td>@item.IdProducto</td>
                 <td>@item.TipoProducto</td>
                 <td>@item.Marca</td>
-                <td>@item.Descripcion</td>
+                <td>@Html.Truncar(item.Descripcion, 20)</td>
                 <td>@item.Precio</td>
                 <td>@item.Oferta</td>
                 <td>
