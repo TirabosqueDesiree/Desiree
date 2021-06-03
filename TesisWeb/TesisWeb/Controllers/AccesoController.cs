@@ -23,7 +23,7 @@ namespace TesisWeb.Controllers
             try
             {
                 
-                using (Models.Entities1 db = new Models.Entities1())
+                using (Models.Entities2 db = new Models.Entities2())
                 {
                     var oUser = (from d in db.Usuarios
                                  where d.email == email.Trim() && d.contraseña == password.Trim()
@@ -70,7 +70,7 @@ namespace TesisWeb.Controllers
             try
             {
 
-                using (Models.Entities1 db = new Models.Entities1())
+                using (Models.Entities2 db = new Models.Entities2())
                 {
                     var oUser = (from d in db.Usuarios
                                  where d.email == email.Trim() && d.contraseña == password.Trim()

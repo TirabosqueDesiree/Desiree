@@ -14,7 +14,7 @@ namespace TesisWeb.Controllers
 {
     public class ProductosController : Controller
     {
-        private Entities1 db = new Entities1();
+        private Entities2 db = new Entities2();
 
         [AuthorizeUser(idOperacion: 1)]
         public ActionResult Carga()

@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "CrearUserCliente";
+    Layout = "~/Views/Shared/_LayoutPrincipal2.cshtml";
+}
+
+@model TesisWeb.Models.clasesClientes.VMUserCliente
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-6 col-sm">
+
+            <br />
+
+            @using (Html.BeginForm("CrearUserCliente", "ClienteUsuario", FormMethod.Post))
+            {
+
+                <h2 class="sub ">Información de Inicio de Sesión</h2>
+                <br />
+                <div class="form-group">
+                    @Html.HiddenFor(x => x.UsuarioModel.idUsuario)
+                    <label>Email</label>
+                    @Html.TextBoxFor(x => x.UsuarioModel.email, new { @class = "form-control", @placeholder = "txtEmail" })
+
+                </div>
+                <div class="form-group">
+                    <label>Precio</label>
+                    @Html.PasswordFor(x => x.UsuarioModel.contraseña, htmlAttributes: new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Rol</label>
+                    @Html.DropDownListFor(x => x.UsuarioModel.idRol, new SelectList(Model.Roles, "idRol", "descripcion", "SELECCIONE", disabledValues: "1-2"), htmlAttributes: new { @class = "form-control" })
+                </div>
+                <br />
+                <hr />
+
+                <br />
+                <h2 class="sub ">Información de Cliente</h2>
+                <br />
+                <div class="form-group">
+                    <label>Nombre</label>
+                    @Html.TextBoxFor(x => x.ClienteModel.Nombre, htmlAttributes: new { @class = "form-control", @id = "txtNombreCliente" })
+                </div>
+
+                <div class="form-group">
+                    <label>Apellido</label>
+                    @Html.TextBoxFor(x => x.ClienteModel.Apellido, htmlAttributes: new { @class = "form-control", @id = "txtApellidoCliente" })
+                </div>
+
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    @Html.TextBoxFor(x => x.ClienteModel.Telefono, htmlAttributes: new { @class = "form-control", @id = "txtTelefono" })
+                </div>
+                <div class="form-group">
+                    <label>Dirección</label>
+                    @Html.TextBoxFor(x => x.ClienteModel.Direccion, htmlAttributes: new { @class = "form-control", @id = "txtTelefono" })
+                </div>
+                <div class="form-group">
+                    <label>Localidad</label>
+                    @Html.TextBoxFor(x => x.ClienteModel.Localidad, htmlAttributes: new { @class = "form-control" })
+                </div>
+
+
+                <div class="form-group">
+                    <label>Provincia</label>
+                    @Html.DropDownListFor(x => x.ClienteModel.IdProvincia, new SelectList(Model.ListaProvincias, "idProvincia", "descripcion", "SELECCIONE"), htmlAttributes: new { @class = "form-control" })
+
+                </div>
+
+                <input type="submit" class="btn btn-outline-dark" value="Crear Cuenta" />
+            }
+
+
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+
+

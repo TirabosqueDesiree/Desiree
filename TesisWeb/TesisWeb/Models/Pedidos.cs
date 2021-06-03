@@ -17,15 +17,17 @@ namespace TesisWeb.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Pedidos()
         {
+            this.DetallePedidos = new HashSet<DetallePedidos>();
             this.PedidosYEstados = new HashSet<PedidosYEstados>();
         }
     
         public int nroPedido { get; set; }
         public Nullable<System.DateTime> fechaPedido { get; set; }
         public Nullable<int> idCliente { get; set; }
-        public Nullable<int> idTipoDevolucion { get; set; }
     
         public virtual Clientes Clientes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DetallePedidos> DetallePedidos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PedidosYEstados> PedidosYEstados { get; set; }
     }

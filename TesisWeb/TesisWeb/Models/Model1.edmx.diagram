@@ -4,27 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="431953895fae4c348c5914a3a62e7b84" Name="Diagram1">
-        <EntityTypeShape EntityType="JACarnesModel.Clientes" Width="1.5" PointX="7.25" PointY="11.875" IsExpanded="true" />
+      <Diagram DiagramId="b82ceef61055475ca75d7682a40e1422" Name="Diagram1">
+        <EntityTypeShape EntityType="JACarnesModel.Clientes" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="JACarnesModel.DetallePedidos" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="JACarnesModel.Empleados" Width="1.5" PointX="7.25" PointY="16.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="JACarnesModel.EstadosPedidos" Width="1.5" PointX="9.5" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.Empleados" Width="1.5" PointX="3.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.EstadosPedidos" Width="1.5" PointX="3.75" PointY="15.125" IsExpanded="true" />
         <EntityTypeShape EntityType="JACarnesModel.Localidades" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="JACarnesModel.Marcas" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="JACarnesModel.Ofertas" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="JACarnesModel.Operaciones" Width="1.5" PointX="2.75" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="JACarnesModel.Pedidos" Width="1.5" PointX="9.5" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="JACarnesModel.PedidosYEstados" Width="1.5" PointX="11.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.Operaciones" Width="1.5" PointX="1.5" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.Pedidos" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.PedidosYEstados" Width="1.5" PointX="6" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="JACarnesModel.Productos" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="JACarnesModel.Provincias" Width="1.5" PointX="5" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="JACarnesModel.Roles_Operaciones" Width="1.5" PointX="5" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="JACarnesModel.RolesUsuarios" Width="1.5" PointX="2.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.Provincias" Width="1.5" PointX="1.5" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.Roles_Operaciones" Width="1.5" PointX="3.75" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.RolesUsuarios" Width="1.5" PointX="1.5" PointY="21.125" IsExpanded="true" />
         <EntityTypeShape EntityType="JACarnesModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="JACarnesModel.TiposProductos" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="JACarnesModel.Usuarios" Width="1.5" PointX="5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JACarnesModel.Usuarios" Width="1.5" PointX="1.5" PointY="17.875" IsExpanded="true" />
         <AssociationConnector Association="JACarnesModel.FK_Clientes_Provincias" ManuallyRouted="false" />
         <AssociationConnector Association="JACarnesModel.FK_Clientes_Usuarios" ManuallyRouted="false" />
         <AssociationConnector Association="JACarnesModel.FK_Pedidos_Clientes" ManuallyRouted="false" />
+        <AssociationConnector Association="JACarnesModel.FK_DetallePedidos_Pedidos" ManuallyRouted="false" />
         <AssociationConnector Association="JACarnesModel.FK_DetallePedidos_Productos" ManuallyRouted="false" />
         <AssociationConnector Association="JACarnesModel.FK_Empleados_Usuarios" ManuallyRouted="false" />
         <AssociationConnector Association="JACarnesModel.FK_PedidosYEstados_Empleados" ManuallyRouted="false" />

@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "CrearCliente";
+    Layout = "~/Views/Shared/_LayoutPrincipal2.cshtml";
+}
+
+
+@model TesisWeb.Models.clasesClientes.VMCliente
+
+@ViewBag.Mesagge
+
+<link href="~/Content/template/css/style2.css" rel="stylesheet" />
+<br />
+
+
+<hr />
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-6 col-sm">
+
+            <br />
+
+            @using (Html.BeginForm("CrearCliente", "Clientes", FormMethod.Post))
+            {
+
+                <h2 class="sub ">Información de Cliente</h2>
+                <br />
+                <div class="form-group">
+                    <label>Nombre</label>
+                    @Html.TextBoxFor(x => x.ClienteModel.Nombre, htmlAttributes: new { @class = "form-control" , @id="txtNombreCliente"})
+                </div>
+
+                <div class="form-group">
+                    <label>Apellido</label>
+                    @Html.TextBoxFor(x => x.ClienteModel.Apellido, htmlAttributes: new { @class = "form-control", @id="txtApellidoCliente"})
+                </div>
+
+                <div class="form-group">
+                    <label>Teléfono</label>
+                    @Html.TextBoxFor(x => x.ClienteModel.Telefono, htmlAttributes: new { @class = "form-control", @id="txtTelefono" })
+                </div>                                      
+
+                <div class="form-group">
+                    <label>Localidad</label>
+                    @Html.TextBoxFor(x => x.ClienteModel.Localidad, htmlAttributes: new { @class = "form-control" })
+                </div>
+
+
+                <div class="form-group">
+                    <label>Provincia</label>
+                    @Html.DropDownListFor(x => x.ClienteModel.IdProvincia, new SelectList(Model.ListaProvincias, "idProvincia", "descripcion", "SELECCIONE"), htmlAttributes: new { @class = "form-control" })
+
+                </div>
+
+
+                <br />
+               
+                <input type="submit" class="btn btn-outline-dark" value="Crear Cliente" >
+            }
+            <br />
+
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+

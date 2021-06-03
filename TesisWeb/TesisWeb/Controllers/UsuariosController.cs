@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using TesisWeb.AccesoDatos;
 using TesisWeb.Models;
+using TesisWeb.Models.clasesClientes;
 using TesisWeb.Models.clasesProducto;
 using TesisWeb.Models.clasesUsuarios;
 
@@ -13,18 +14,21 @@ namespace TesisWeb.Controllers
     public class UsuariosController : Controller
     {
         // GET: Usuarios
-        private Entities1 db = new Entities1();
+        private Entities2 db = new Entities2();
 
         
         public ActionResult CrearUsuario()
         {
-            Gestor gestor = new Gestor();
-            VMUsuario usuario = new VMUsuario();
+            {
+                Gestor gestor = new Gestor();
+                VMUsuario usuario = new VMUsuario();
 
-            usuario.Roles = gestor.ListadoRoles();
-           
+                usuario.Roles = gestor.ListadoRoles();
 
-            return View(usuario);
+
+                return View(usuario);
+            }
+
         }
 
         [HttpPost]

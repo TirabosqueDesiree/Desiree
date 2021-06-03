@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using TesisWeb.Models;
+using TesisWeb.Models.clasesClientes;
 using TesisWeb.Models.clasesProducto;
 using TesisWeb.Models.clasesUsuarios;
 
@@ -11,7 +12,7 @@ namespace TesisWeb.AccesoDatos
 {
     public class Gestor
     {
-        public string cadenaCon = "Data Source=desiree;Initial Catalog=J&ACarnes;Integrated Security=True";
+        private string cadenaCon = "Data Source=desiree;Initial Catalog=J&ACarnes;Integrated Security=True";
 
         public void InsertarProductos(VMProducto prod)
         {
@@ -32,6 +33,98 @@ namespace TesisWeb.AccesoDatos
             conex.Close();
 
         }
+
+        public List<Usuarios> ListadoUsuarios()
+        {
+            var lista = new List<Usuarios>();
+            var sql = "SELECT * from Usuarios";
+
+            SqlConnection conex = new SqlConnection(cadenaCon);
+            conex.Open();
+            SqlCommand cmd = new SqlCommand(sql, conex);
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr != null)
+            {
+                while (dr.Read())
+                {
+                    Usuarios u = new Usuarios();
+                    u.idUsuario = (int)dr["idUsuario"];
+                    u.email = dr["email"].ToString();
+                    u.contraseña = dr["contraseña"].ToString();
+                    u.idRol = (int)dr["idRol"];
+
+                    lista.Add(u);
+                }
+            }
+            dr.Close();
+            conex.Close();
+            return lista;
+        }
+
+        public void InsertarCliente(VMCliente cliente)
+        {
+            var sql = "INSERT INTO Clientes (nombre, apellido, telefono, direccion, idUsuario, localidad, idProvincia) VALUES (@nombre, @apellido, @telefono, @direccion, @idUsuario, @localidad, @idProvincia)";
+            SqlConnection conex = new SqlConnection(cadenaCon);
+            conex.Open();
+            SqlCommand cmd = new SqlCommand(sql, conex);
+            cmd.Parameters.AddWithValue("@nombre", cliente.ClienteModel.Nombre);
+            cmd.Parameters.AddWithValue("@apellido", cliente.ClienteModel.Apellido);
+            cmd.Parameters.AddWithValue("@telefono", cliente.ClienteModel.Telefono);
+            cmd.Parameters.AddWithValue("@direccion", cliente.ClienteModel.Direccion);
+            cmd.Parameters.AddWithValue("@idUsuario", cliente.ClienteModel.IdUsuario);
+            cmd.Parameters.AddWithValue("@localidad", cliente.ClienteModel.Localidad);
+            cmd.Parameters.AddWithValue("@idProvincia", cliente.ClienteModel.IdProvincia);
+
+
+
+            cmd.ExecuteNonQuery();
+            conex.Close();
+        }
+        public void InsertarCliente2(Cliente cliente)
+        {
+            var sql = "INSERT INTO Clientes (nombre, apellido, telefono, direccion, idUsuario, localidad, idProvincia) VALUES (@nombre, @apellido, @telefono, @direccion, @idUsuario, @localidad, @idProvincia)";
+            SqlConnection conex = new SqlConnection(cadenaCon);
+            conex.Open();
+            SqlCommand cmd = new SqlCommand(sql, conex);
+            cmd.Parameters.AddWithValue("@nombre", cliente.Nombre);
+            cmd.Parameters.AddWithValue("@apellido", cliente.Apellido);
+            cmd.Parameters.AddWithValue("@telefono", cliente.Telefono);
+            cmd.Parameters.AddWithValue("@direccion", cliente.Direccion);
+            cmd.Parameters.AddWithValue("@idUsuario", cliente.IdUsuario);
+            cmd.Parameters.AddWithValue("@localidad", cliente.Localidad);
+            cmd.Parameters.AddWithValue("@idProvincia", cliente.IdProvincia);
+
+
+
+            cmd.ExecuteNonQuery();
+            conex.Close();
+        }
+
+        public List<Provincia> ListadoProvincias()
+        {
+            var lista = new List<Provincia>();
+            var sql = "SELECT * from Provincias";
+
+            SqlConnection conex = new SqlConnection(cadenaCon);
+            conex.Open();
+            SqlCommand cmd = new SqlCommand(sql, conex);
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr != null)
+            {
+                while (dr.Read())
+                {
+                    Provincia p = new Provincia();
+                    p.IdProvincia = (int)dr["idProvincia"];
+                    p.Descripcion = dr["descripcion"].ToString();
+
+                    lista.Add(p);
+                }
+            }
+            dr.Close();
+            conex.Close();
+            return lista;
+        }
+
         public void InsertarMarcas(Marca marca)
         {
             var sql = "INSERT INTO Marcas (descripcion) VALUES (@descripcion)";
@@ -380,6 +473,22 @@ namespace TesisWeb.AccesoDatos
             conex.Close();
 
         }
+        public void Insertarusuarios2(Usuarios usuario)
+        {
+            var sql = "INSERT INTO Usuarios (email, contraseña, idRol) VALUES (@email, @contraseña, @idRol)";
+            SqlConnection conex = new SqlConnection(cadenaCon);
+            conex.Open();
+            SqlCommand cmd = new SqlCommand(sql, conex);
+            cmd.Parameters.AddWithValue("@email", usuario.email);
+            cmd.Parameters.AddWithValue("@contraseña", usuario.contraseña);
+            cmd.Parameters.AddWithValue("@idRol", usuario.idRol);
+
+
+
+            cmd.ExecuteNonQuery();
+            conex.Close();
+
+        }
         public List<RolesUsuarios> ListadoRoles()
         {
             var lista = new List<RolesUsuarios>();
@@ -406,5 +515,38 @@ namespace TesisWeb.AccesoDatos
             conex.Close();
             return lista;
         }
+        public List<DTOUsuarioId> BuscarUsuarioConContraseñayEmail(string correo, string password)
+        {
+            var lista = new List<DTOUsuarioId>();
+            
+            var sql= "SELECT u.idUsuario as Id, u.email as Email from Usuarios u where u.contraseña = @password and u.email = @correo";
+
+            SqlConnection conex = new SqlConnection(cadenaCon);
+            conex.Open();
+            SqlCommand cmd = new SqlCommand(sql, conex);
+            cmd.Parameters.AddWithValue("@password", password);
+            cmd.Parameters.AddWithValue("@correo", correo);
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr != null)
+            {
+                while (dr.Read())
+                {
+
+                    DTOUsuarioId user = new DTOUsuarioId();
+
+                    user.Id = int.Parse(dr["Id"].ToString());
+                    
+
+                    lista.Add(user);
+                }
+            }
+            
+            dr.Close();
+            conex.Close();
+            return lista;
+
+        }
+
     }
 }

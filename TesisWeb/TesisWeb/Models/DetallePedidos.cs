@@ -19,6 +19,7 @@ namespace TesisWeb.Models
         public Nullable<int> idProducto { get; set; }
         public Nullable<int> cantidad { get; set; }
     
+        public virtual Pedidos Pedidos { get; set; }
         public virtual Productos Productos { get; set; }
     }
 }

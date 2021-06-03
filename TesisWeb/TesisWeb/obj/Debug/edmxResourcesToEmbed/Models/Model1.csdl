@@ -24,6 +24,7 @@
     <Property Name="nroPedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="idProducto" Type="Int32" />
     <Property Name="cantidad" Type="Int32" />
+    <NavigationProperty Name="Pedidos" Relationship="Self.FK_DetallePedidos_Pedidos" FromRole="DetallePedidos" ToRole="Pedidos" />
     <NavigationProperty Name="Productos" Relationship="Self.FK_DetallePedidos_Productos" FromRole="DetallePedidos" ToRole="Productos" />
   </EntityType>
   <EntityType Name="Empleados">
@@ -85,8 +86,8 @@
     <Property Name="nroPedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="fechaPedido" Type="DateTime" Precision="0" />
     <Property Name="idCliente" Type="Int32" />
-    <Property Name="idTipoDevolucion" Type="Int32" />
     <NavigationProperty Name="Clientes" Relationship="Self.FK_Pedidos_Clientes" FromRole="Pedidos" ToRole="Clientes" />
+    <NavigationProperty Name="DetallePedidos" Relationship="Self.FK_DetallePedidos_Pedidos" FromRole="Pedidos" ToRole="DetallePedidos" />
     <NavigationProperty Name="PedidosYEstados" Relationship="Self.FK_PedidosYEstados_Pedidos1" FromRole="Pedidos" ToRole="PedidosYEstados" />
   </EntityType>
   <EntityType Name="PedidosYEstados">
@@ -207,6 +208,18 @@
       </Principal>
       <Dependent Role="Pedidos">
         <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetallePedidos_Pedidos">
+    <End Role="Pedidos" Type="Self.Pedidos" Multiplicity="1" />
+    <End Role="DetallePedidos" Type="Self.DetallePedidos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pedidos">
+        <PropertyRef Name="nroPedido" />
+      </Principal>
+      <Dependent Role="DetallePedidos">
+        <PropertyRef Name="nroPedido" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -342,7 +355,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="Entities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Clientes" EntityType="Self.Clientes" />
     <EntitySet Name="DetallePedidos" EntityType="Self.DetallePedidos" />
     <EntitySet Name="Empleados" EntityType="Self.Empleados" />
@@ -371,6 +384,10 @@
     <AssociationSet Name="FK_Pedidos_Clientes" Association="Self.FK_Pedidos_Clientes">
       <End Role="Clientes" EntitySet="Clientes" />
       <End Role="Pedidos" EntitySet="Pedidos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetallePedidos_Pedidos" Association="Self.FK_DetallePedidos_Pedidos">
+      <End Role="Pedidos" EntitySet="Pedidos" />
+      <End Role="DetallePedidos" EntitySet="DetallePedidos" />
     </AssociationSet>
     <AssociationSet Name="FK_DetallePedidos_Productos" Association="Self.FK_DetallePedidos_Productos">
       <End Role="Productos" EntitySet="Productos" />

@@ -75,7 +75,6 @@
     <Property Name="nroPedido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="fechaPedido" Type="date" />
     <Property Name="idCliente" Type="int" />
-    <Property Name="idTipoDevolucion" Type="int" />
   </EntityType>
   <EntityType Name="PedidosYEstados">
     <Key>
@@ -167,6 +166,18 @@
       </Principal>
       <Dependent Role="Clientes">
         <PropertyRef Name="idUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetallePedidos_Pedidos">
+    <End Role="Pedidos" Type="Self.Pedidos" Multiplicity="1" />
+    <End Role="DetallePedidos" Type="Self.DetallePedidos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pedidos">
+        <PropertyRef Name="nroPedido" />
+      </Principal>
+      <Dependent Role="DetallePedidos">
+        <PropertyRef Name="nroPedido" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -339,6 +350,10 @@
     <AssociationSet Name="FK_Clientes_Usuarios" Association="Self.FK_Clientes_Usuarios">
       <End Role="Usuarios" EntitySet="Usuarios" />
       <End Role="Clientes" EntitySet="Clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetallePedidos_Pedidos" Association="Self.FK_DetallePedidos_Pedidos">
+      <End Role="Pedidos" EntitySet="Pedidos" />
+      <End Role="DetallePedidos" EntitySet="DetallePedidos" />
     </AssociationSet>
     <AssociationSet Name="FK_DetallePedidos_Productos" Association="Self.FK_DetallePedidos_Productos">
       <End Role="Productos" EntitySet="Productos" />

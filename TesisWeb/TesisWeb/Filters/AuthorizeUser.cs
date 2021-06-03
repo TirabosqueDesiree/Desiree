@@ -11,7 +11,7 @@ namespace TesisWeb.Filters
     public class AuthorizeUser : AuthorizeAttribute
     {
         private Usuarios oUsuario;
-        private Entities1 db = new Entities1();
+        private Entities2 db = new Entities2();
         private int idOperacion;
 
         public AuthorizeUser (int idOperacion=0)
