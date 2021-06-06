@@ -11,7 +11,8 @@ namespace TesisWeb.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Usuarios
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,8 +23,23 @@ namespace TesisWeb.Models
         }
     
         public int idUsuario { get; set; }
+
+        [Display(Name = "Correo electrónico")]
+        [Required(ErrorMessage = "Este campo es requerido.")]
+        [RegularExpression(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*",
+            ErrorMessage = "Dirección de Correo electrónico incorrecta.")]
+        [StringLength(100, ErrorMessage = "Longitud máxima 100")]
+        [DataType(DataType.EmailAddress)]
         public string email { get; set; }
+
+        [Display(Name = "Contraseña")]
+        [Required(ErrorMessage = "Este campo es requerido.")]
+        [StringLength(15, ErrorMessage = "Longitud entre 6 y 15 caracteres.",
+                      MinimumLength = 6)]
+        [DataType(DataType.Password)]
         public string contraseña { get; set; }
+
+
         public Nullable<int> idRol { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

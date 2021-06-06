@@ -16,11 +16,25 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
+
+
+
+
 <body class="bg-primary">
+  
     <div>
         <div>
             <main>
+
                 <div class="container">
+                    <div>
+                        <br />
+                        <p style="background-color:aliceblue" >
+                            <b>¡Atención!</b>
+                            Si es tu primera compra en la tienda y todavía no tienes usuario y contraseña hace clic en "Hacete Cliente". <br />                     
+                            Si hiciste compras anteriormente en la tienda debes ingresar el email y contraseña con el que te registraste para continuar.
+                        </p>
+                    </div>
 
                     <div class="row justify-content-center">
 
@@ -48,7 +62,7 @@
                                         @if (Session["User"] == null)
                                         {
                                            
-                                            @Html.ActionLink("Crear Usuario", "CrearUsuario", "Usuarios")
+                                            @Html.ActionLink("Hacete Cliente", "CrearUserCliente", "ClienteUsuario")
                                         }
 
                                     </form>

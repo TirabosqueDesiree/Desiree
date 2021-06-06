@@ -123,6 +123,7 @@
     <Compile Include="Controllers\AccesoController.cs" />
     <Compile Include="Controllers\Clientes1Controller.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
+    <Compile Include="Controllers\ClienteUsuario2Controller.cs" />
     <Compile Include="Controllers\ClienteUsuarioController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -140,6 +141,7 @@
     <Compile Include="Models\clasesClientes\Provincia.cs" />
     <Compile Include="Models\clasesClientes\VMCliente.cs" />
     <Compile Include="Models\clasesClientes\VMUserCliente.cs" />
+    <Compile Include="Models\clasesClientes\VMUserCliente2.cs" />
     <Compile Include="Models\clasesProducto\DTOProducto.cs" />
     <Compile Include="Models\clasesProducto\Marca.cs" />
     <Compile Include="Models\clasesProducto\Oferta.cs" />
@@ -1892,7 +1894,9 @@
     <Content Include="Content\templatePrinc\assets\img\imagen2.jpeg" />
     <Content Include="Content\templatePrinc\assets\img\media res.jpg" />
     <Content Include="Content\templatePrinc\assets\img\MEDIARES.jpg" />
+    <Content Include="Content\templatePrinc\assets\img\pescado2.jpg" />
     <Content Include="Content\templatePrinc\assets\img\POLLO.jpg" />
+    <Content Include="Content\templatePrinc\assets\js\formulario.js" />
     <Content Include="Content\templatePrinc\assets\js\main.js" />
     <Content Include="Content\templatePrinc\assets\vendor\aos\aos.css" />
     <Content Include="Content\templatePrinc\assets\vendor\aos\aos.js" />
@@ -2108,6 +2112,7 @@
     <Content Include="Views\Clientes1\Edit.cshtml" />
     <Content Include="Views\Clientes1\Index.cshtml" />
     <Content Include="Views\ClienteUsuario\CrearUserCliente.cshtml" />
+    <Content Include="Views\ClienteUsuario2\CrearUserCliente2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -10,44 +10,27 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-    <!-- Vendor CSS Files -->
-    <link href="~/Content/templatePrinc/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-
-    <link href="~/Content/templatePrinc/assets/vendor/icofont/icofont.min.css" rel="stylesheet" />
-
-    <link href="~/Content/templatePrinc/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
-
-    <link href="~/Content/templatePrinc/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet" />
-
-    <link href="~/Content/templatePrinc/assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
-
-
-    <link href="~/Content/templatePrinc/assets/vendor/venobox/venobox.css" rel="stylesheet" />
-
-    <link href="~/Content/templatePrinc/assets/vendor/aos/aos.css" rel="stylesheet" />
-
-    <link href="~/Content/templatePrinc/assets/css/style.css" rel="stylesheet" />
-
-    <script src="~/Content/fontawesome-free-5.15.3-web/js/all.min.js"></script>
-    <script src="~/Content/fontawesome-free-5.15.3-web/js/fontawesome.min.js"></script>
-
-    <link href="~/Content/fontawesome-free-5.15.3-web/css/fontawesome.css" rel="stylesheet" />
+    @Styles.Render("~/assets /img/favicon.png")
+    @Styles.Render("~/assets/img/apple-touch-icon.png")
     <!--ver-->
+    @Styles.Render("~/Content/templatePrinc/assets/vendor/bootstrap/css/bootstrap.min.css")
+    @Styles.Render("~/Content/templatePrinc/assets/vendor/icofont/icofont.min.css")
+    @Styles.Render("~/Content/templatePrinc/assets/vendor/boxicons/css/boxicons.min.css")
+    @Styles.Render("~/Content/templatePrinc/assets/vendor/owl.carousel/assets/owl.carousel.min.css")
+    @Styles.Render("~/Content/templatePrinc/assets/vendor/remixicon/remixicon.css")
+    @Styles.Render("~/Content/templatePrinc/assets/vendor/venobox/venobox.css")
+    @Styles.Render("~/Content/templatePrinc/assets/vendor/aos/aos.css")
+    @Styles.Render("~/Content/templatePrinc/assets/css/style.css")
 
-    @Styles.Render("~/Content/css")
-
+    @Styles.Render("~/Content/fontawesome-free-5.15.3-web/css/fontawesome.css")
+    @Styles.Render("~/Content/bootstrap.css")
     
 </head>
 
 <body>
-
+    
 
 
 
@@ -95,11 +78,27 @@
                             <li>
                                 @Html.ActionLink("Empresa", "LoginAdm", "Acceso")
                             </li>
-                            <li>@Html.ActionLink("Login", "Login", "Acceso")</li>
-                            <li>@Html.ActionLink("Pedidos", "Index", "MaestroDetalle")</li>
-                            <li>@Html.ActionLink("Cerrar Sesión", "Logout", "Acceso")</li>
 
-                            </ul>
+                            <li>@Html.ActionLink("Crear Cuenta", "CrearUserCliente", "ClienteUsuario")</li>
+                            <li>@Html.ActionLink("Pedidos", "Index", "MaestroDetalle")</li>
+
+                            @if (Session["User"] == null)
+                            {
+                                <li>@Html.ActionLink("Iniciar Sesión", "Login", "Acceso")</li>
+                            }
+                            else
+                            {
+
+                                <li>
+                                    <a href="@Url.Action("Logout", "Acceso" )"><i class="fas fa-user-times"></i></a>
+
+
+                                </li>
+
+
+                            }
+
+                        </ul>
                     </nav><!-- .nav-menu -->
 
                     <a href="#about" class="get-started-btn scrollto">Get Started</a>
@@ -111,22 +110,27 @@
     </header>
     @RenderBody()
 
+    @Scripts.Render("~/Content/fontawesome-free-5.15.3-web/js/all.min.js")
+    @Scripts.Render("~/Content/fontawesome-free-5.15.3-web/js/fontawesome.min.js")
 
-    <!-- Vendor JS Files -->
-    <script src="~/Content/templatePrinc/assets/vendor/jquery/jquery.min.js"></script>
-    <script src="~/Content/templatePrinc/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="~/Content/templatePrinc/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-    <script src="~/Content/templatePrinc/assets/vendor/php-email-form/validate.js"></script>
-    <script src="~/Content/templatePrinc/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-    <script src="~/Content/templatePrinc/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-    <script src="~/Content/templatePrinc/assets/vendor/counterup/counterup.min.js"></script>
-    <script src="~/Content/templatePrinc/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="~/Content/templatePrinc/assets/vendor/venobox/venobox.min.js"></script>
-    <script src="~/Content/templatePrinc/assets/vendor/aos/aos.js"></script>
-    <script src="~/Content/js/all.js"></script>
-    <!-- Template Main JS File -->
-    <script src="~/Content/templatePrinc/assets/js/main.js"></script>
-    <!-- ver -->
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Content/templatePrinc/assets/vendor/jquery/jquery.min.js")
+    @Scripts.Render("~/Content/templatePrinc/assets/vendor/bootstrap/js/bootstrap.bundle.min.js")
+    @Scripts.Render("~/Content/templatePrinc/assets/vendor/jquery.easing/jquery.easing.min.js")
+    @Scripts.Render("~/Content/templatePrinc/assets/vendor/php-email-form/validate.js")
+    @Scripts.Render("~/Content/templatePrinc/assets/vendor/owl.carousel/owl.carousel.min.js")
+    @Scripts.Render("~/Content/templatePrinc/assets/vendor/waypoints/jquery.waypoints.min.js")
+    @Scripts.Render("~/Content/templatePrinc/assets/vendor/counterup/counterup.min.js")
+    @Scripts.Render("~/Content/templatePrinc/assets/vendor/isotope-layout/isotope.pkgd.min.js")
+    @Scripts.Render("~/Content/templatePrinc/assets/vendor/venobox/venobox.min.js")
+    @Scripts.Render("~/Content/templatePrinc/assets/vendor/aos/aos.js")
+    @Scripts.Render("~/Content/templatePrinc/assets/js/main.js")
+
+    @Scripts.Render("~/Scripts/jquery-3.6.0.js")
+    @Scripts.Render("~/Scripts/jquery.validate.js")
+    @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")
+    @Scripts.Render("~/Scripts/bootstrap.js")
+
 
 </body>
 

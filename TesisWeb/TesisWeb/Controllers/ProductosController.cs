@@ -31,23 +31,28 @@ namespace TesisWeb.Controllers
         [HttpPost]
         public ActionResult Carga(VMProducto prod, HttpPostedFileBase imagenProducto)
         {
-            if (imagenProducto != null && imagenProducto.ContentLength > 0)
+            if (ModelState.IsValid)
             {
-                byte[] imageData = null;
-                using (var binaryReader = new BinaryReader(imagenProducto.InputStream))
+
+
+                if (imagenProducto != null && imagenProducto.ContentLength > 0)
                 {
-                    imageData = binaryReader.ReadBytes(imagenProducto.ContentLength);
+                    byte[] imageData = null;
+                    using (var binaryReader = new BinaryReader(imagenProducto.InputStream))
+                    {
+                        imageData = binaryReader.ReadBytes(imagenProducto.ContentLength);
+                    }
+                    //setear la imagen a la entidad que se creara
+                    prod.ProductoModel.imagenProducto = imageData;
+
+
                 }
-                //setear la imagen a la entidad que se creara
-                prod.ProductoModel.imagenProducto = imageData;
-
-
+                Gestor gestor = new Gestor();
+                gestor.InsertarProductos(prod);
+                db.SaveChanges();
+                
             }
-            Gestor gestor = new Gestor();
-            gestor.InsertarProductos(prod);
-            db.SaveChanges();
             return RedirectToAction("ListadoProductos");
-
         }
 
 
@@ -73,9 +78,13 @@ namespace TesisWeb.Controllers
         [HttpPost]
         public ActionResult CargaMarca(Marca marca)
         {
-            Gestor gestor = new Gestor();
-            gestor.InsertarMarcas(marca);
-            return View("RegistroExito");
+            if(ModelState.IsValid)
+            {
+                Gestor gestor = new Gestor();
+                gestor.InsertarMarcas(marca);
+            }
+
+            return RedirectToAction("ListadoMarcas", "Productos");
         }
 
 
@@ -296,8 +305,12 @@ namespace TesisWeb.Controllers
         [HttpPost]
         public ActionResult CargaTipoProducto(TipoProducto tp)
         {
-            Gestor gestor = new Gestor();
-            gestor.InsertarTipoProd(tp);
+            if(ModelState.IsValid)
+            {
+                Gestor gestor = new Gestor();
+                gestor.InsertarTipoProd(tp);
+            }
+            
             return RedirectToAction("ListadoTiposProductos", "Productos");
         }
 

@@ -107,7 +107,7 @@ namespace TesisWeb.Controllers
         public ActionResult Logout()
         {
             Session["User"] = null;
-            return RedirectToAction("LoginAdm", "Acceso");
+            return RedirectToAction("IndexPrincipal", "HomePrincipal");
         }
     }
 }

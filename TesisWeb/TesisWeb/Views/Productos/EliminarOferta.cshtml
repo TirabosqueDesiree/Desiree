@@ -5,27 +5,32 @@
 }
 
 @model TesisWeb.Models.clasesProducto.Oferta
+<link href="~/Content/template/css/style2.css" rel="stylesheet" />
 
-<h2>Eliminar una Oferta</h2>
 
-<div class="row">
-    <div class="col-md-2">
-    </div>
-    @using (Html.BeginForm())
-    {
-        @Html.HiddenFor(x => x.IdOferta)
-
-        <div class="col-md-8">
-
-            <div class="form-group">
-                <label>Descripción</label>
-                @Html.TextBoxFor(x => x.Descripcion, htmlAttributes: new { @class = "form-control" })
-
-            </div>
-            <input type="submit" class="btn btn-primary" value="Eliminar Oferta" />
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
         </div>
-    }
-    <div class="col-md-2">
-    </div>
-</div>
+        <div class=" col-md-6  border p-3 form ">
+            @using (Html.BeginForm())
+            {
+                @Html.HiddenFor(x => x.IdOferta)
 
+                <h2>Eliminar Oferta:</h2>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Descripcion)
+                    @Html.TextBoxFor(x => x.Descripcion, htmlAttributes: new { @class = "form-control" })
+
+                </div>
+                <br />
+                <input type="submit" class="btn btn-danger" value="Eliminar" />
+
+            }
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+
+
+</div>

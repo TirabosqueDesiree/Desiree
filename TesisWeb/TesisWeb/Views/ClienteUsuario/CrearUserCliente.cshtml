@@ -5,28 +5,34 @@
 }
 
 @model TesisWeb.Models.clasesClientes.VMUserCliente
+
 <div class="container">
 
     <div class="row">
 
-        <div class="col-md-6 col-sm">
-
+        <div class="col-md-6 col-sm " style="margin: 100px">
             <br />
 
-            @using (Html.BeginForm("CrearUserCliente", "ClienteUsuario", FormMethod.Post))
+            @using (Html.BeginForm("CrearUserCliente", "ClienteUsuario", FormMethod.Post, new { id = "formulario", @class = "frmStyle" }))
             {
-
+                <br />
                 <h2 class="sub ">Información de Inicio de Sesión</h2>
                 <br />
                 <div class="form-group">
                     @Html.HiddenFor(x => x.UsuarioModel.idUsuario)
-                    <label>Email</label>
-                    @Html.TextBoxFor(x => x.UsuarioModel.email, new { @class = "form-control", @placeholder = "txtEmail" })
+                    <br />
+                    @Html.LabelFor(x => x.UsuarioModel.email)
+                    @Html.TextBoxFor(x => x.UsuarioModel.email, new { @class = "form-control", autofocus = "autofocus" })
+                    @Html.ValidationMessageFor(x => x.UsuarioModel.email, null, new { @class = "text-danger" })
+                    <br />
+
 
                 </div>
                 <div class="form-group">
-                    <label>Precio</label>
-                    @Html.PasswordFor(x => x.UsuarioModel.contraseña, htmlAttributes: new { @class = "form-control" })
+                    @Html.LabelFor(x => x.UsuarioModel.contraseña)
+                    @Html.PasswordFor(x => x.UsuarioModel.contraseña, new { @class = "form-control", autofocus = "autofocus" })
+                    @Html.ValidationMessageFor(x => x.UsuarioModel.contraseña, null, new { @class = "text-danger" })
+                    <br />
                 </div>
                 <div class="form-group">
                     <label>Rol</label>
@@ -39,33 +45,41 @@
                 <h2 class="sub ">Información de Cliente</h2>
                 <br />
                 <div class="form-group">
-                    <label>Nombre</label>
+                    @Html.LabelFor(x => x.ClienteModel.Nombre)
                     @Html.TextBoxFor(x => x.ClienteModel.Nombre, htmlAttributes: new { @class = "form-control", @id = "txtNombreCliente" })
+                    @Html.ValidationMessageFor(x => x.ClienteModel.Nombre, null, new { @class = "text-danger" })
+                    <br />
                 </div>
 
                 <div class="form-group">
-                    <label>Apellido</label>
+                    @Html.LabelFor(x => x.ClienteModel.Apellido)
                     @Html.TextBoxFor(x => x.ClienteModel.Apellido, htmlAttributes: new { @class = "form-control", @id = "txtApellidoCliente" })
+                    @Html.ValidationMessageFor(x => x.ClienteModel.Apellido, null, new { @class = "text-danger" })
                 </div>
 
                 <div class="form-group">
-                    <label>Teléfono</label>
+                    @Html.LabelFor(x => x.ClienteModel.Telefono)
                     @Html.TextBoxFor(x => x.ClienteModel.Telefono, htmlAttributes: new { @class = "form-control", @id = "txtTelefono" })
+                    @Html.ValidationMessageFor(x => x.ClienteModel.Telefono, null, new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
-                    <label>Dirección</label>
-                    @Html.TextBoxFor(x => x.ClienteModel.Direccion, htmlAttributes: new { @class = "form-control", @id = "txtTelefono" })
+                    @Html.LabelFor(x => x.ClienteModel.Direccion)
+                    @Html.TextBoxFor(x => x.ClienteModel.Direccion, htmlAttributes: new { @class = "form-control", @id = "txtDireccion" })
+                    @Html.ValidationMessageFor(x => x.ClienteModel.Direccion, null, new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
-                    <label>Localidad</label>
+                    @Html.LabelFor(x => x.ClienteModel.Localidad)
                     @Html.TextBoxFor(x => x.ClienteModel.Localidad, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.ClienteModel.Localidad, null, new { @class = "text-danger" })
+                    <br />
                 </div>
 
 
                 <div class="form-group">
-                    <label>Provincia</label>
+                    @Html.LabelFor(x => x.ClienteModel.IdProvincia)
                     @Html.DropDownListFor(x => x.ClienteModel.IdProvincia, new SelectList(Model.ListaProvincias, "idProvincia", "descripcion", "SELECCIONE"), htmlAttributes: new { @class = "form-control" })
-
+                    @Html.ValidationMessageFor(x => x.ClienteModel.IdProvincia, null, new { @class = "text-danger" })
+                    <br />
                 </div>
 
                 <input type="submit" class="btn btn-outline-dark" value="Crear Cuenta" />
@@ -82,4 +96,11 @@
 
 
 
+<script src="~/Content/templatePrinc/assets/js/formulario.js"></script>
+
+
+<script src="~/Scripts/jquery-3.6.0.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
 

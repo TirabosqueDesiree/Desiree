@@ -19,22 +19,13 @@
 
     <!-- Vendor CSS Files -->
     <link href="~/Content/templatePrinc/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-
     <link href="~/Content/templatePrinc/assets/vendor/icofont/icofont.min.css" rel="stylesheet" />
-
     <link href="~/Content/templatePrinc/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
-
     <link href="~/Content/templatePrinc/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet" />
-
     <link href="~/Content/templatePrinc/assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
-
-
     <link href="~/Content/templatePrinc/assets/vendor/venobox/venobox.css" rel="stylesheet" />
-
     <link href="~/Content/templatePrinc/assets/vendor/aos/aos.css" rel="stylesheet" />
-
     <link href="~/Content/templatePrinc/assets/css/style.css" rel="stylesheet" />
-
     <script src="~/Content/fontawesome-free-5.15.3-web/js/all.min.js"></script>
     <script src="~/Content/fontawesome-free-5.15.3-web/js/fontawesome.min.js"></script>
 
@@ -94,12 +85,30 @@
                             <li>
                                 @Html.ActionLink("Empresa", "LoginAdm", "Acceso")
                             </li>
-                            <li>@Html.ActionLink("Login", "Login", "Acceso")</li>
+
+                            <li>@Html.ActionLink("Crear Cuenta", "CrearUserCliente", "ClienteUsuario")</li>
                             <li>@Html.ActionLink("Pedidos", "Index", "MaestroDetalle")</li>
-                            <li>@Html.ActionLink("Cerrar Sesión", "Logout", "Acceso")</li>
+
+                            @if (Session["User"] == null)
+                            {
+                                <li>@Html.ActionLink("Iniciar Sesión", "Login", "Acceso")</li>
+                            }
+                            else
+                            {
+
+                                <li>
+                                    <a href="@Url.Action("Logout", "Acceso" )"><i class="fas fa-user-times"></i></a>
 
 
-                    </nav><!-- .nav-menu -->
+                                </li>
+
+
+                            }
+
+
+
+
+</nav><!-- .nav-menu -->
 
                     <a href="#about" class="get-started-btn scrollto">Get Started</a>
                 </div>
@@ -497,7 +506,7 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>Frequently Asked Questions</h2>
+                    <h2>Preguntas Frecuentes</h2>
                 </div>
 
                 <ul class="faq-list" data-aos="fade-up">

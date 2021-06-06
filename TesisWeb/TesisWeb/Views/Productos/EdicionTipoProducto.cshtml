@@ -3,29 +3,36 @@
     ViewBag.Title = "EdicionTipoProducto";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="~/Content/template/css/style2.css" rel="stylesheet" />
 
 @model TesisWeb.Models.clasesProducto.TipoProducto
-<h2>Editar Tipo Producto</h2>
 
-<div class="row">
-    <div class="col-md-2">
-    </div>
-    @using (Html.BeginForm())
-    {
-        @Html.HiddenFor(x => x.IdTipoProducto)
-
-        <div class="col-md-8">
-
-            <div class="form-group">
-                <label>Descripción</label>
-                @Html.TextBoxFor(x => x.Descripcion, htmlAttributes: new { @class = "form-control" })
-
-            </div>
-            <input type="submit" class="btn btn-primary" value="Editar Tipo Producto" />
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
         </div>
-    }
-    <div class="col-md-2">
+        <div class="col-md-6  border p-3 form ">
+
+            @using (Html.BeginForm())
+            {
+                @Html.HiddenFor(x => x.IdTipoProducto)
+                <h2>Editar Tipo Producto</h2>
+
+                <div class="form-group">
+                    <label>Descripción</label>
+                    @Html.TextBoxFor(x => x.Descripcion, htmlAttributes: new { @class = "form-control" })
+
+                </div>
+                <br />
+                <input type="submit" class="btn btn-primary" value="Editar" />
+
+            }
+        </div>
+
+        <div class="col-md-3">
+        </div>
     </div>
 </div>
+
 
 

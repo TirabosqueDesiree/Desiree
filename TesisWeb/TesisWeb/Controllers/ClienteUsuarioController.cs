@@ -15,10 +15,11 @@ namespace TesisWeb.Controllers
         public ActionResult CrearUserCliente()
         {
             Gestor gestor = new Gestor();
-            VMUserCliente usuario = new VMUserCliente();
-
-            usuario.Roles = gestor.ListadoRoles();
-            usuario.ListaProvincias = gestor.ListadoProvincias();
+            VMUserCliente usuario = new VMUserCliente
+            {
+                Roles = gestor.ListadoRoles(),
+                ListaProvincias = gestor.ListadoProvincias()
+            };
 
             return View(usuario);
 
@@ -67,10 +68,10 @@ namespace TesisWeb.Controllers
 
             if(ModelState.IsValid)
             {
-               
+                ViewBag.Registro = "Registro de Usuario Exitoso";
                 gestor.InsertarCliente2(c);
-                ViewBag.Registro = "Registro de Usuario Exitoso, continue completando el formulario de cliente";
-                return RedirectToAction("CrearUserCliente");
+
+                return RedirectToAction("IndexPrincipal", "HomePrincipal" );
             }
             else
             {

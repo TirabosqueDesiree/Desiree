@@ -24,13 +24,13 @@
         {
             <h2 class="sub ">Agregar un Tipo de Producto</h2>
             <div class="form-group">
-                <label>Descripción</label>
+                @Html.LabelFor(x => x.Descripcion)
                 @Html.TextBoxFor(x => x.Descripcion, htmlAttributes: new { @class = "form-control" })
-
+                @Html.ValidationMessageFor(x => x.Descripcion, null, new { @class = "text-danger" })
             </div>
             <br />
             <div>
-                <input type="submit" class="btn btn-primary" value="Agregar Tipo Producto" />
+                <input type="submit" class="btn btn-primary" value="Agregar nuevo" />
             </div>
            
 

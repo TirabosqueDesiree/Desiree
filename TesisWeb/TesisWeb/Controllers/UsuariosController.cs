@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TesisWeb.AccesoDatos;
+using TesisWeb.Filters;
 using TesisWeb.Models;
 using TesisWeb.Models.clasesClientes;
 using TesisWeb.Models.clasesProducto;
@@ -16,7 +18,7 @@ namespace TesisWeb.Controllers
         // GET: Usuarios
         private Entities2 db = new Entities2();
 
-        
+       [AuthorizeUser(idOperacion: 9)]
         public ActionResult CrearUsuario()
         {
             {
@@ -34,11 +36,14 @@ namespace TesisWeb.Controllers
         [HttpPost]
         public ActionResult CrearUsuario(VMUsuario usuario)
         {
-           
-            Gestor gestor = new Gestor();
-            gestor.Insertarusuarios(usuario);
+           if(ModelState.IsValid)
+            {
+                Gestor gestor = new Gestor();
+                gestor.Insertarusuarios(usuario);
+            }
             
-            return RedirectToAction("IndexPrincipal", "HomePrincipal");
+            
+            return RedirectToAction("Index", "Home");
 
         }
     }
